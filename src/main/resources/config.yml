@@ -44,9 +44,6 @@ blocked-mods:
 # เตะผู้เล่นเมื่อตรวจพบ mod ที่บล็อก
 kick-on-mod-detection: true
 
-# ข้อความเตะ (ใช้ {mod} สำหรับชื่อ mod ที่ตรวจพบ)
-kick-message: "&cไม่อนุญาตให้ใช้ Mod ที่ถูกบล็อกในเซิร์ฟเวอร์นี้!\n&eคุณสามารถใช้ Forge/Fabric ได้ แต่ห้ามใช้ Mod ที่โกง\n&6Blocked Mod: {mod}"
-
 # Log การตรวจจับใน console
 log-detections: true
 
