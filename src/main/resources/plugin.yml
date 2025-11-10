@@ -1,0 +1,25 @@
+name: ModBlocker
+version: 1.0.0
+main: com.warakorn.modblocker.ModBlocker
+api-version: "1.21"
+description: Block specific mods but allow mod loaders
+author: Warakorn
+
+commands:
+  modblocker:
+    description: ModBlocker commands
+    usage: |
+      /modblocker reload - Reload config
+      /modblocker status - Show status
+    permission: modblocker.admin
+
+permissions:
+  modblocker.admin:
+    description: Access to all ModBlocker commands
+    default: op
+  modblocker.reload:
+    description: Allows reloading the config
+    default: op
+  modblocker.bypass:
+    description: Allows bypassing the mod check
+    default: op

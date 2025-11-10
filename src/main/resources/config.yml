@@ -1,0 +1,57 @@
+# Mod Blocker Configuration
+
+# Mod Loaders ที่อนุญาตให้ใช้ (ไม่บล็อก)
+allowed-mod-loaders:
+  - "fabric"
+  - "forge"
+  - "quilt"
+
+# Mods ที่ต้องการบล็อก (เฉพาะ mods ที่โกงเท่านั้น)
+blocked-mods:
+  # Minimap & World Map Mods
+  - "journeymap"
+  - "xaerominimap"
+  - "xaeroworldmap"
+  - "voxelmap"
+  
+  # X-ray & Cheat Mods
+  - "xray"
+  - "wurst"
+  - "aristois"
+  - "impact"
+  - "meteor"
+  - "bleachhack"
+  - "kami"
+  - "future"
+  - "rusherhack"
+  
+  # Automation & Macro Mods
+  - "baritone"
+  - "autoclicker"
+  - "killaura"
+  - "reach"
+  - "velocity"
+  - "nofall"
+  
+  # Other Cheat Mods
+  - "cheat"
+  - "hack"
+  - "hacked"
+  - "freecam"
+  - "crystalaura"
+  - "triggerbot"
+
+# เตะผู้เล่นเมื่อตรวจพบ mod ที่บล็อก
+kick-on-mod-detection: true
+
+# ข้อความเตะ (ใช้ {mod} สำหรับชื่อ mod ที่ตรวจพบ)
+kick-message: "&cไม่อนุญาตให้ใช้ Mod ที่ถูกบล็อกในเซิร์ฟเวอร์นี้!\n&eคุณสามารถใช้ Forge/Fabric ได้ แต่ห้ามใช้ Mod ที่โกง\n&6Blocked Mod: {mod}"
+
+# Log การตรวจจับใน console
+log-detections: true
+
+# การตั้งค่าการตรวจสอบพฤติกรรม
+behavior-monitoring:
+  enabled: true
+  check-interval: 40
+  max-checks: 10
