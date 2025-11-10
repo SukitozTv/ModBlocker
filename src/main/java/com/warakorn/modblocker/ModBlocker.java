@@ -161,7 +161,7 @@ public class ModBlocker extends JavaPlugin implements Listener, PluginMessageLis
             if (lowerChannel.contains(blockedMod.toLowerCase())) {
                 getLogger().warning("Detected blocked mod: " + channel + " from player: " + player.getName());
                 detectedMods.add(blockedMod);
-                kickPlayer(player, "Blocked Mod: " + blockedMod);
+                kickPlayer(player, blockedMod); // ส่งเฉพาะชื่อ mod ไม่ใส่ Blocked Mod ซ้ำ
                 return;
             }
         }
@@ -170,22 +170,27 @@ public class ModBlocker extends JavaPlugin implements Listener, PluginMessageLis
         getLogger().info("Player " + player.getName() + " channel: " + channel);
     }
 
-    private void kickPlayer(Player player, String reason) {
+    private void kickPlayer(Player player, String modName) {
         if (!kickOnModDetection) {
-            getLogger().warning("Detected blocked mod but not kicking: " + reason + " from " + player.getName());
+            getLogger().warning("Detected blocked mod but not kicking: " + modName + " from " + player.getName());
             return;
         }
 
-        final String finalMessage = ChatColor.translateAlternateColorCodes('&',
-                kickMessage.replace("{mod}", reason) + "\n&7(Reason: " + reason + ")");
+        // Highlight blocked mod name in gold
+        String displayMod = ChatColor.GOLD + modName + ChatColor.RED;
 
-        // Remove player from checkedPlayers before kicking to allow re-detection
+        final String finalMessage = ChatColor.translateAlternateColorCodes('&',
+                "&cYou are not allowed to use &cblocked mods &con this server!\n" +
+                        "&eYou may use &6Forge/Fabric&e, but &cblocked mods &eare strictly prohibited.\n" +
+                        "&cBlocked Mod: " + displayMod + "\n" +
+                        "&7(Reason: Blocked Mod: " + modName + ")");
+
         checkedPlayers.remove(player.getUniqueId());
 
         getServer().getScheduler().runTask(this, () -> {
             if (player.isOnline()) {
                 player.kickPlayer(finalMessage);
-                getLogger().warning("Successfully kicked " + player.getName() + " for using: " + reason);
+                getLogger().warning("Successfully kicked " + player.getName() + " for using: " + modName);
             }
         });
     }
